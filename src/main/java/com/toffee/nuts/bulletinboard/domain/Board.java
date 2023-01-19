@@ -25,6 +25,8 @@ public class Board {
 
     private String title;
     //내용
+    //TODO: 게시글 작성 에 MarkDown 적용
+    //TODO: 사진, 영상 등 첨부할 때 어떻게 처리할 것인지 고민하기
     private String context;
 
     //TODO: 댓글
