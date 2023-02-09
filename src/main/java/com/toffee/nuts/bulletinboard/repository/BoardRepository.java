@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.concurrent.atomic.AtomicLong;
 
 
-public interface BoardRepository extends JpaRepository<Board, AtomicLong> {
+public interface BoardRepository extends JpaRepository<Board, Integer> {
 }

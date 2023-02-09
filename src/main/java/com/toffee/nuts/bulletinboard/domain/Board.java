@@ -3,17 +3,17 @@ package com.toffee.nuts.bulletinboard.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.util.concurrent.atomic.AtomicLong;
 
 @Entity
-@RequiredArgsConstructor
-public class Board {
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Board extends BaseEntity{
 
     @Id @GeneratedValue
-    private AtomicLong id;
-
+    private Integer id;
 
     // 게시물 변경을 위한 id, pwd 정보 사용
     //TODO: login 시스템 들어올 시 userId 값으로 변경할 수 있도록 변경
@@ -30,4 +30,12 @@ public class Board {
     private String context;
 
     //TODO: 댓글
+
+    public Board(String username, String pwd, String author, String title, String context) {
+        this.username = username;
+        this.pwd = pwd;
+        this.author = author;
+        this.title = title;
+        this.context = context;
+    }
 }

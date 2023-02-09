@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Entity
-public class Comment {
+public class Comment extends BaseEntity{
 
     @Id @GeneratedValue
     public AtomicLong id;

@@ -1,4 +1,4 @@
 package com.toffee.nuts.bulletinboard.domain;
 
-public class Member {
+public class Member extends BaseEntity{
 }
