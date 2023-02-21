@@ -12,7 +12,7 @@ public interface BoardService{
     void saveBoard(Board board);
     Page<BoardDescDto> getBoardDescList(Pageable pageable);
     BoardDto getBoardDetail(Integer id) throws Exception;
-    void updateBoard();
+    void updateBoard(Board board);
     void deleteBoard(Board board);
 
 }

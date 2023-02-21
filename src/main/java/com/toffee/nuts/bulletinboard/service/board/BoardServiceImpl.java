@@ -23,6 +23,7 @@ public class BoardServiceImpl implements BoardService {
     public Page<BoardDescDto> getBoardDescList(Pageable pageable) {
         return boardRepository.findAll(pageable)
                 .map(BoardDescDto::new);
+
     }
 
     public BoardDto getBoardDetail(Integer id) throws Exception {
@@ -41,12 +42,19 @@ public class BoardServiceImpl implements BoardService {
         boardRepository.save(board);
     }
 
-    public void updateBoard() {
+    public void updateBoard(Board board) {
+        Optional<Board> findResult = boardRepository.findById(board.getId());
+
+        findResult.ifPresent(value -> value.updateBoard(board));
 
     }
 
     public void deleteBoard(Board board) {
-        boardRepository.delete(board);
+
+        Optional<Board> findResult = boardRepository.findById(board.getId());
+
+        findResult.ifPresent(boardRepository::delete);
+
     }
 
 }

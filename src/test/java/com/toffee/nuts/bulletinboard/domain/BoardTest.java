@@ -2,6 +2,7 @@ package com.toffee.nuts.bulletinboard.domain;
 
 import com.toffee.nuts.bulletinboard.repository.BoardRepository;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,9 +19,10 @@ class BoardTest {
     @Autowired
     BoardRepository boardRepository;
 
-    @Test
+
+    @BeforeEach
     @Transactional
-    public void boardTest() throws Exception{
+    public void testBoardinit() throws Exception{
         for (int i = 0; i < 100; i++) {
             Board board = new Board(
                     "username",
@@ -31,12 +33,19 @@ class BoardTest {
             boardRepository.save(board);
         }
 
-        List<Board> all = boardRepository.findAll();
-        Assertions.assertThat(all.size()).isEqualTo(100);
+//        List<Board> all = boardRepository.findAll();
+//        Assertions.assertThat(all.size()).isEqualTo(100);
     }
 
     @Test
     public void getBoardListDescTest() throws Exception {
+        List<Board> boards = boardRepository.findAll();
+
+        Assertions.assertThat(boards.size()).isEqualTo(100);
+    }
+
+    @Test
+    public void addBoardTest() {
 
     }
 

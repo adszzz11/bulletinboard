@@ -38,4 +38,24 @@ public class Board extends BaseEntity{
         this.title = title;
         this.context = context;
     }
+
+    public void updateBoard(Board board) {
+        if (!board.getUsername().equals(this.username)) {
+            this.username = board.getUsername();
+        }
+        if (!board.getAuthor().equals(this.author)) {
+            this.author = board.getAuthor();
+        }
+        if (!board.getContext().equals(this.context)) {
+            this.context = board.getContext();
+        }
+        if (!board.getTitle().equals(this.title)) {
+            this.title = board.getTitle();
+        }
+        if (!board.getPwd().equals(this.pwd)) {
+            this.pwd = board.getPwd();
+        }
+
+    }
+
 }
