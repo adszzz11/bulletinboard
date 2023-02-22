@@ -1,6 +1,8 @@
 package com.toffee.nuts.bulletinboard.domain;
 
 import com.toffee.nuts.bulletinboard.repository.BoardRepository;
+import com.toffee.nuts.bulletinboard.service.board.BoardService;
+import com.toffee.nuts.bulletinboard.service.board.BoardServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +20,6 @@ class BoardTest {
 
     @Autowired
     BoardRepository boardRepository;
-
 
     @BeforeEach
     @Transactional
@@ -45,8 +46,34 @@ class BoardTest {
     }
 
     @Test
-    public void addBoardTest() {
+    public void boardRepositoryFlowTest() {
+        Board board = new Board(
+                "boardFlowTest",
+                "pwd",
+                "author",
+                "boardFlowTest",
+                "boardFlowTest");
+        Board savedBoard = boardRepository.save(board);
+        boardRepository.findById(savedBoard.getId())
+                .ifPresent(value -> Assertions.assertThat(value.getContext()).isEqualTo(savedBoard.getContext()));
 
+        Board toBeChangedBoard = new Board(
+                "boardFlowTest2",
+                "pwd",
+                "author",
+                "boardFlowTest",
+                "changedBoardFlowTest");
+
+        savedBoard.updateBoard(toBeChangedBoard);
+
+        boardRepository.save(savedBoard);
+
+        boardRepository.findById(savedBoard.getId())
+                .ifPresent(value -> Assertions.assertThat(value.getContext()).isEqualTo(toBeChangedBoard.getContext()));
+
+        boardRepository.delete(savedBoard);
+
+        Assertions.assertThat(boardRepository.findById(savedBoard.getId()).isPresent()).isFalse();
     }
 
 

@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 
 public interface BoardService{
-    void saveBoard(Board board);
+    Board saveBoard(Board board);
     Page<BoardDescDto> getBoardDescList(Pageable pageable);
     BoardDto getBoardDetail(Integer id) throws Exception;
-    void updateBoard(Board board);
+    Board updateBoard(Board board);
     void deleteBoard(Board board);
 
 }

@@ -26,27 +26,40 @@ public class BoardServiceImpl implements BoardService {
 
     }
 
-    public BoardDto getBoardDetail(Integer id) throws Exception {
-        Optional<Board> board = boardRepository.findById(id);
+    public BoardDto getBoardDetail(Integer id) {
+        try {
+            Optional<Board> board = boardRepository.findById(id);
 
-        if (board.isPresent()) {
-            return new BoardDto(board.get());
-        }
-        else {
-            throw new Exception("no board");
-        }
+            if (board.isPresent()) {
+                return new BoardDto(board.get());
+            } else {
+                throw new Exception("no board");
+            }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public void saveBoard(Board board) {
-        boardRepository.save(board);
+    public Board saveBoard(Board board) {
+        return boardRepository.save(board);
     }
 
-    public void updateBoard(Board board) {
+    public Board updateBoard(Board board) {
         Optional<Board> findResult = boardRepository.findById(board.getId());
+        if (findResult.isPresent()) {
+            try {
+                findResult.ifPresent(value -> value.updateBoard(board));
+                boardRepository.save(findResult.get());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        findResult.ifPresent(value -> value.updateBoard(board));
+            return findResult.get();
+        }
 
+        return null;
     }
 
     public void deleteBoard(Board board) {
