@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
+
 public interface BoardService{
     Board saveBoard(Board board);
     Page<BoardDescDto> getBoardDescList(Pageable pageable);

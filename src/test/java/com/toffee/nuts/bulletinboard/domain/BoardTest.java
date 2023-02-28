@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -32,6 +33,7 @@ class BoardTest {
                     "title" + i,
                     "context" + i);
             boardRepository.save(board);
+
         }
 
 //        List<Board> all = boardRepository.findAll();
@@ -42,7 +44,7 @@ class BoardTest {
     public void getBoardListDescTest() throws Exception {
         List<Board> boards = boardRepository.findAll();
 
-        Assertions.assertThat(boards.size()).isEqualTo(100);
+        assertThat(boards.size()).isEqualTo(100);
     }
 
     @Test
@@ -55,7 +57,7 @@ class BoardTest {
                 "boardFlowTest");
         Board savedBoard = boardRepository.save(board);
         boardRepository.findById(savedBoard.getId())
-                .ifPresent(value -> Assertions.assertThat(value.getContext()).isEqualTo(savedBoard.getContext()));
+                .ifPresent(value -> assertThat(value.getContext()).isEqualTo(savedBoard.getContext()));
 
         Board toBeChangedBoard = new Board(
                 "boardFlowTest2",
@@ -69,11 +71,11 @@ class BoardTest {
         boardRepository.save(savedBoard);
 
         boardRepository.findById(savedBoard.getId())
-                .ifPresent(value -> Assertions.assertThat(value.getContext()).isEqualTo(toBeChangedBoard.getContext()));
+                .ifPresent(value -> assertThat(value.getContext()).isEqualTo(toBeChangedBoard.getContext()));
 
         boardRepository.delete(savedBoard);
 
-        Assertions.assertThat(boardRepository.findById(savedBoard.getId()).isPresent()).isFalse();
+        assertThat(boardRepository.findById(savedBoard.getId()).isPresent()).isFalse();
     }
 
 
