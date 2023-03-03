@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class BoardRestController {
 
-    // asaafd
+
     BoardServiceImpl boardService;
 
     @GetMapping("/boards")
