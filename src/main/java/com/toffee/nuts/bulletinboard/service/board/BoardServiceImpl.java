@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
 
@@ -26,7 +26,7 @@ public class BoardServiceImpl implements BoardService {
 
     }
 
-    public BoardDto getBoardDetail(Integer id) {
+    public BoardDto getBoardDetail(Long id) {
         try {
             Optional<Board> board = boardRepository.findById(id);
 
@@ -71,3 +71,4 @@ public class BoardServiceImpl implements BoardService {
     }
 
 }
+

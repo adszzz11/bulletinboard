@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequiredArgsConstructor
 public class BoardDto {
 
-    private Integer id;
+    private Long id;
     private String title;
     private String author;
     private String context;

@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class Board extends BaseEntity{
 
     @Id @GeneratedValue
-    private Integer id;
+    private Long id;
 
     // 게시물 변경을 위한 id, pwd 정보 사용
     //TODO: login 시스템 들어올 시 userId 값으로 변경할 수 있도록 변경

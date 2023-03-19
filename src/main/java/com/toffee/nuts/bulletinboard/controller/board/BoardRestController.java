@@ -29,7 +29,7 @@ public class BoardRestController {
     }
 
     @PostMapping("/boards/{id}")
-    public String board(@PathVariable Integer id) {
+    public String board(@PathVariable Long id) {
 
         BoardDto boardDetail = boardService.getBoardDetail(id);
 
@@ -44,9 +44,9 @@ public class BoardRestController {
 
     @Data
     static class SaveBoardResponse {
-        private Integer id;
+        private Long id;
 
-        public SaveBoardResponse(Integer id) {
+        public SaveBoardResponse(Long id) {
             this.id = id;
         }
     }

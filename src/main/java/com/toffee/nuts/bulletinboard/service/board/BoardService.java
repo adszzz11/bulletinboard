@@ -8,11 +8,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
-
+@Service
 public interface BoardService{
     Board saveBoard(Board board);
     Page<BoardDescDto> getBoardDescList(Pageable pageable);
-    BoardDto getBoardDetail(Integer id) throws Exception;
+    BoardDto getBoardDetail(Long id) throws Exception;
     Board updateBoard(Board board);
     void deleteBoard(Board board);
 
