@@ -1,11 +1,10 @@
 package com.toffee.nuts.bulletinboard.domain;
 
+import com.toffee.nuts.bulletinboard.dto.BoardDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.*;
-
-import java.util.concurrent.atomic.AtomicLong;
 
 @Entity
 @Getter
@@ -29,6 +28,8 @@ public class Board extends BaseEntity{
     //TODO: 사진, 영상 등 첨부할 때 어떻게 처리할 것인지 고민하기
     private String context;
 
+//    @OneToMany
+//    private ArrayList<Comment> comments;
     //TODO: 댓글
 
     public Board(String username, String pwd, String author, String title, String context) {
@@ -56,6 +57,23 @@ public class Board extends BaseEntity{
             this.pwd = board.getPwd();
         }
 
+    }
+    public void updateBoard(BoardDto board) {
+        if (!board.username().equals(this.username)) {
+            this.username = board.username();
+        }
+        if (!board.author().equals(this.author)) {
+            this.author = board.author();
+        }
+        if (!board.context().equals(this.context)) {
+            this.context = board.context();
+        }
+        if (!board.title().equals(this.title)) {
+            this.title = board.title();
+        }
+        if (!board.pwd().equals(this.pwd)) {
+            this.pwd = board.pwd();
+        }
     }
 
 }

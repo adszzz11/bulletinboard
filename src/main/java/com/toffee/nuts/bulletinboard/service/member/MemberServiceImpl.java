@@ -3,9 +3,11 @@ package com.toffee.nuts.bulletinboard.service.member;
 import com.toffee.nuts.bulletinboard.domain.Member;
 import com.toffee.nuts.bulletinboard.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
 

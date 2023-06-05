@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.toffee.nuts.bulletinboard.domain.Board;
 import lombok.RequiredArgsConstructor;
 
-
-public record BoardDto(
-        @JsonProperty("id") Long id
-        , @JsonProperty("title") String title
+public record BoardCreateDto(
+        @JsonProperty("title") String title
         , @JsonProperty("author") String author
         , @JsonProperty("username") String username
         , @JsonProperty("pwd") String pwd
@@ -16,8 +14,8 @@ public record BoardDto(
 ) {
 
 
-    public static BoardDto getBoardDto(Board board) {
-        return new BoardDto(board.getId(), board.getTitle(), board.getAuthor(), board.getUsername(), board.getPwd(), board.getContext());
+    public static BoardCreateDto getBoardCreateDto(Board board) {
+        return new BoardCreateDto(board.getTitle(), board.getAuthor(), board.getUsername(), board.getPwd(), board.getContext());
 
 //        this.comment = board.getComment();
     }

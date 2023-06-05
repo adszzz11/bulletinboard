@@ -3,18 +3,15 @@ package com.toffee.nuts.bulletinboard.service.board;
 import com.toffee.nuts.bulletinboard.domain.Board;
 import com.toffee.nuts.bulletinboard.dto.BoardDescDto;
 import com.toffee.nuts.bulletinboard.dto.BoardDto;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class BoardServiceTest {

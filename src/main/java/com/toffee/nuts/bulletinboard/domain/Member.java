@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class Member extends BaseEntity{
 
     @Id
@@ -24,8 +25,17 @@ public class Member extends BaseEntity{
 //    @OneToMany
 //    private ArrayList<Comment> comments;
 
-    @OneToMany
-    private ArrayList<Board> boards;
+
+    public Member(String username, String userId, String nickName, String password, String dstAddr) {
+        this.username = username;
+        this.userId = userId;
+        this.nickName = nickName;
+        this.password = password;
+        this.dstAddr = dstAddr;
+    }
+
+//    @OneToMany
+//    private ArrayList<Board> boards;
 
     public void updateMember(Member member) {
         if(!this.username.equals(member.getUsername())) this.username = member.getUsername();
