@@ -10,5 +10,5 @@ import java.util.concurrent.atomic.AtomicLong;
 public class Comment extends BaseEntity{
 
     @Id @GeneratedValue
-    public AtomicLong id;
+    public Long id;
 }

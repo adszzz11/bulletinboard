@@ -1,21 +1,15 @@
 package com.toffee.nuts.bulletinboard.dto;
 
 import com.toffee.nuts.bulletinboard.domain.Board;
-import lombok.Data;
 
-import java.util.concurrent.atomic.AtomicLong;
-
-@Data
-public class BoardDescDto {
-
-    private Integer id;
-    private String title;
-    private String author;
-
-    public BoardDescDto(Board board) {
-        this.id = board.getId();
-        this.author = board.getAuthor();
-        this.title = board.getTitle();
+public record BoardDescDto(
+        Long id
+        , String title
+        , String author
+//        ,Integer commentCount
+//        ,Integer likeCount
+) {
+    public static BoardDescDto getBoardDescDto(Board board) {
+        return new BoardDescDto(board.getId(), board.getTitle(), board.getAuthor());
     }
-
 }
