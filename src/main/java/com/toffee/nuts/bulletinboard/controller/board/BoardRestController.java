@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-public class BoardRestController implements BoardControllInterface{
+public class BoardRestController implements BoardControllInterface {
 
 
     @Autowired
