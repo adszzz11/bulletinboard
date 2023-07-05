@@ -1,11 +1,8 @@
-package com.toffee.nuts.bulletinboard.controller.login;
+package com.toffee.nuts.bulletinboard.security.controller.login;
 
 import com.toffee.nuts.bulletinboard.domain.Member;
-import com.toffee.nuts.bulletinboard.service.member.MemberService;
 import com.toffee.nuts.bulletinboard.service.member.MemberServiceImpl;
-import com.toffee.nuts.bulletinboard.util.authentication.AuthManager;
-import com.toffee.nuts.bulletinboard.util.authentication.SessionAuthManager;
-import jakarta.servlet.http.HttpServletResponse;
+import com.toffee.nuts.bulletinboard.security.session.SessionAuthManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -33,7 +30,11 @@ public class LoginRestController {
         log.info("userId={}, password={}", userId, password);
         try {
             Member member = memberService.login(userId, password);
+            //Token
+
+            //Session
             String sessionId = authManager.generate(member);
+
 
             HttpHeaders headers = new HttpHeaders();
             headers.set("sessionId", sessionId);

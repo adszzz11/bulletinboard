@@ -1,8 +1,6 @@
-package com.toffee.nuts.bulletinboard.util.authentication;
+package com.toffee.nuts.bulletinboard.security;
 
 import com.toffee.nuts.bulletinboard.domain.Member;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 
 public interface AuthManager {
